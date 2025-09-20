@@ -18,16 +18,16 @@
 src/
 ├── ModalFormPage.tsx                    # 메인 페이지 컴포넌트
 ├── components/
-│   ├── AccessibilityModal.tsx           # 접근성 지원 모달 베이스 컴포넌트
-│   └── ApplicationFormModal/
+│   ├── AccessbilityModal/               # 접근성 모달 및 관련 훅들
+│   │   ├── AccessibilityModal.tsx       # 접근성 지원 모달 베이스 컴포넌트
+│   │   ├── useKeyboardEffect.ts         # 키보드 이벤트 처리 훅
+│   │   ├── useLockOutsideScrollEffect.ts # 배경 스크롤 방지 훅
+│   │   └── useTriggerFocusEffect.ts     # 포커스 관리 훅
+│   └── ApplicationFormModal/            # 신청폼 모달 관련 컴포넌트들
 │       ├── ApplicationFormModal.tsx     # 신청폼 모달 컴포넌트
 │       ├── ApplicationForm.tsx          # 폼 컴포넌트
 │       ├── ErrorMessage.tsx             # 에러 메시지 컴포넌트
-│       ├── useApplicationForm.ts        # 폼 로직 훅
-│       └── hooks/
-│           ├── useKeyboardEffect.ts     # 키보드 이벤트 처리
-│           ├── useLockOutsideScrollEffect.ts  # 배경 스크롤 방지
-│           └── useTriggerFocusEffect.ts # 포커스 관리
+│       └── useApplicationForm.ts        # 폼 로직 훅
 ├── main.tsx                             # 앱 진입점
 └── style.css                            # 글로벌 스타일
 ```
