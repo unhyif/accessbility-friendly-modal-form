@@ -1,10 +1,14 @@
 import "modern-normalize";
+
+import ModalFormPage from "./ModalFormPage";
+import { OverlayProvider } from "overlay-kit";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import ModalFormPage from "./ModalFormPage";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ModalFormPage />
+    <OverlayProvider>
+      <ModalFormPage />
+    </OverlayProvider>
   </StrictMode>
 );

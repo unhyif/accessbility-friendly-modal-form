@@ -2,11 +2,13 @@
   "compileOnSave": false,
   "compilerOptions": {
     "jsx": "react-jsx",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "preserve",
     "moduleResolution": "bundler",
     "noEmit": true,
     "skipLibCheck": true,
     "strict": true,
+    "target": "ES2020",
     "verbatimModuleSyntax": true
   }
 }
