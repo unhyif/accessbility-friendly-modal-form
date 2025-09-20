@@ -6,13 +6,27 @@ import {
 import ErrorMessage from "./ErrorMessage";
 import { useId } from "react";
 
+/**
+ * ApplicationForm 컴포넌트의 props 인터페이스
+ */
 interface ApplicationFormProps {
+  /** 폼 제출 시 호출되는 콜백 함수 */
   onSubmit: (data: ApplicationFormData) => void;
+  /** 취소 버튼 클릭 시 호출되는 콜백 함수 */
   onCancel: () => void;
 }
 
+/** 이메일 유효성 검사를 위한 정규표현식 */
 const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
+/**
+ * 접근성을 고려한 지원서 폼 컴포넌트
+ * 필수 필드 검증, 이메일 형식 검증, 메시지 길이 제한 등의 기능을 제공합니다.
+ * ARIA 속성을 사용하여 스크린 리더 접근성을 향상시킵니다.
+ *
+ * @param onSubmit - 폼 제출 시 호출되는 콜백 함수
+ * @param onCancel - 취소 버튼 클릭 시 호출되는 콜백 함수
+ */
 const ApplicationForm = ({ onSubmit, onCancel }: ApplicationFormProps) => {
   const {
     register,
@@ -21,12 +35,18 @@ const ApplicationForm = ({ onSubmit, onCancel }: ApplicationFormProps) => {
     watch,
   } = useApplicationForm();
 
+  // 각 입력 필드의 고유 ID 생성 (접근성 라벨 연결용)
   const nameId = useId();
   const emailId = useId();
   const messageId = useId();
 
+  // 메시지 글자 수 실시간 추적
   const messageLength = watch("message")?.length || 0;
 
+  /**
+   * 폼 제출 핸들러
+   * @param data - 검증된 폼 데이터
+   */
   const onSubmitHandler: SubmitHandler<ApplicationFormData> = (data) => {
     onSubmit(data);
   };
